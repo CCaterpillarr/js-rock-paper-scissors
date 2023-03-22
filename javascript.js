@@ -1,3 +1,4 @@
+//Make computer choose rock/paper/scissors based on rng
 function getComputerChoice(){
     let computerRoll = Math.random() * 100 + 1;
     let computerChoice;
@@ -11,6 +12,7 @@ function getComputerChoice(){
     return computerChoice;
 }
 
+//Check if player chose one of the 3 proper options
 function compareString(string){
     if (string === "rock" || string === "paper" || string === "scissors") {
         return 1;
@@ -24,11 +26,14 @@ function gameRound(){
     let playerChoice = prompt("Your choice:");
     playerChoice = playerChoice.toLowerCase();
 
+    //Show the prompt again if player didn't choose one of the 3 proper options
     while (compareString(playerChoice) !== 1) {
         console.log("That's not an option. Try again.");
         playerChoice = prompt("Your choice:");
         playerChoice = playerChoice.toLowerCase();
     }
+
+    //Compare the choices and decide the winner of the round
     console.log(`The computer chose ${computerChoice}`);
     if (playerChoice === computerChoice) {
         console.log("Draw");
@@ -49,15 +54,19 @@ function gameRound(){
 }
 
 function game(){
+
+    //Play a specified number (i's end value) of rounds
     let score = 0;
     for (let i = 1; i <=5; i++){
         let roundResult = gameRound();
         if (roundResult === 2){
-            i--;
+            i--; //Add 1 round if previous was a draw (so there's always 5 rounds)
         } else {
             score = score + roundResult;
         }
     }
+
+    //Check if player won based on score
     console.log(`Your score: ${score}/5`);
     if (score >= 3){
         console('You won the game');

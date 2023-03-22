@@ -23,9 +23,11 @@ let computerChoice = getComputerChoice();
 let playerChoice = prompt("Your choice:");
 playerChoice = playerChoice.toLowerCase();
 
-if (compareString(playerChoice) === 0) {
+while (compareString(playerChoice) !== 1) {
     console.log("That's not an option. Try again.");
-} else {
+    playerChoice = prompt("Your choice:");
+    playerChoice = playerChoice.toLowerCase();
+}
     console.log(`The computer chose ${computerChoice}`);
     if (playerChoice === computerChoice) {
         console.log("Draw");
@@ -40,4 +42,3 @@ if (compareString(playerChoice) === 0) {
     } else {
         console.log("You lose");
     }
-}

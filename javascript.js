@@ -19,18 +19,20 @@ function compareString(string){
     }
 }
 
-let computerChoice = getComputerChoice();
-let playerChoice = prompt("Your choice:");
-playerChoice = playerChoice.toLowerCase();
-
-while (compareString(playerChoice) !== 1) {
-    console.log("That's not an option. Try again.");
-    playerChoice = prompt("Your choice:");
+function gameRound(){
+    let computerChoice = getComputerChoice();
+    let playerChoice = prompt("Your choice:");
     playerChoice = playerChoice.toLowerCase();
-}
+
+    while (compareString(playerChoice) !== 1) {
+        console.log("That's not an option. Try again.");
+        playerChoice = prompt("Your choice:");
+        playerChoice = playerChoice.toLowerCase();
+    }
     console.log(`The computer chose ${computerChoice}`);
     if (playerChoice === computerChoice) {
         console.log("Draw");
+        return 2;
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors")
         ||
@@ -38,7 +40,30 @@ while (compareString(playerChoice) !== 1) {
         ||
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log("You win");
+        console.log("You win the round");
+        return 1;
     } else {
-        console.log("You lose");
+        console.log("You lose the round");
+        return 0;
     }
+}
+
+function game(){
+    let score = 0;
+    for (let i = 1; i <=5; i++){
+        let roundResult = gameRound();
+        if (roundResult === 2){
+            i--;
+        } else {
+            score = score + roundResult;
+        }
+    }
+    console.log(`Your score: ${score}/5`);
+    if (score >= 3){
+        console('You won the game');
+    } else {
+        console.log("You lost the game")
+    }
+}
+
+game();

@@ -69,7 +69,7 @@ function game(){
     //Check if player won based on score
     console.log(`Your score: ${score}/5`);
     if (score >= 3){
-        console('You won the game');
+        console.log('You won the game');
     } else {
         console.log("You lost the game")
     }

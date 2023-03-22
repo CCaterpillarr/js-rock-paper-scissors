@@ -20,10 +20,24 @@ function compareString(string){
     }
 }
 
+let computerChoice = getComputerChoice();
 let playerChoice = prompt("Your choice:");
+console.log(`The computer chose ${computerChoice.toLowerCase()}`);
 
-console.log(compareString(playerChoice));
-
-
-console.log(playerChoice);
-console.log(getComputerChoice());
+if (compareString(playerChoice) === 0) {
+    console.log("That's not an option. Try again.");
+} else {
+    if (playerChoice.toLowerCase() === computerChoice.toLowerCase()) {
+        console.log("Draw");
+    } else if (
+        (playerChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "scissors")
+        ||
+        (playerChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "rock")
+        ||
+        (playerChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "paper")
+    ) {
+        console.log("You win");
+    } else {
+        console.log("You lose");
+    }
+}

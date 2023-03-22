@@ -2,17 +2,16 @@ function getComputerChoice(){
     let computerRoll = Math.random() * 100 + 1;
     let computerChoice;
     if (computerRoll <= 33){
-        computerChoice = "Rock";
+        computerChoice = "rock";
     } else if (computerRoll <= 66){
-        computerChoice = "Paper";
+        computerChoice = "paper";
     } else {
-        computerChoice = "Scissors";
+        computerChoice = "scissors";
     }
     return computerChoice;
 }
 
 function compareString(string){
-    string = string.toLowerCase();
     if (string === "rock" || string === "paper" || string === "scissors") {
         return 1;
     } else {
@@ -22,19 +21,20 @@ function compareString(string){
 
 let computerChoice = getComputerChoice();
 let playerChoice = prompt("Your choice:");
-console.log(`The computer chose ${computerChoice.toLowerCase()}`);
+playerChoice = playerChoice.toLowerCase();
 
 if (compareString(playerChoice) === 0) {
     console.log("That's not an option. Try again.");
 } else {
-    if (playerChoice.toLowerCase() === computerChoice.toLowerCase()) {
+    console.log(`The computer chose ${computerChoice}`);
+    if (playerChoice === computerChoice) {
         console.log("Draw");
     } else if (
-        (playerChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "scissors")
+        (playerChoice === "rock" && computerChoice === "scissors")
         ||
-        (playerChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "rock")
+        (playerChoice === "paper" && computerChoice === "rock")
         ||
-        (playerChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "paper")
+        (playerChoice === "scissors" && computerChoice === "paper")
     ) {
         console.log("You win");
     } else {

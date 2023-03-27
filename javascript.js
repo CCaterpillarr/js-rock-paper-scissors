@@ -73,10 +73,11 @@ function game(){
 
     resultsPanel.textContent = "";
 
-    if (isPlayed === 1) {     // Allows player to restart the game.
+    if (isPlayed === 1) {     // Allows player to restart the game if clicked after he started playing.
         gameEnd();
         resultsPanel.textContent = "Game restarted.";
     }
+
     isPlayed = 1;  // Player starts playing the game.
 
     playButton.textContent = "Restart";
@@ -85,7 +86,6 @@ function game(){
     const buttons = document.querySelector(".buttons");
 
     const rockButton = document.createElement('button');
-    rockButton.classList.toggle("rockButton");
     rockButton.textContent = "rock"
     rockButton.setAttribute("title", "co mam na czole co mam na czole");
     buttons.appendChild(rockButton);
@@ -93,14 +93,12 @@ function game(){
     rockButton.myParam = "rock";
 
     const paperButton = document.createElement('button');
-    rockButton.classList.toggle("paperButton");
     paperButton.textContent = "paper"
     buttons.appendChild(paperButton);
     paperButton.addEventListener("click", gameRound);
     paperButton.myParam = "paper";
 
     const scissorsButton = document.createElement('button');
-    rockButton.classList.toggle("scissorsButton");
     scissorsButton.textContent = "scissors"
     buttons.appendChild(scissorsButton);
     scissorsButton.addEventListener("click", gameRound);

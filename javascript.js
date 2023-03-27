@@ -17,11 +17,12 @@ function gameRound(playerChoice){
     let computerChoice = getComputerChoice();
     playerChoice = playerChoice.currentTarget.myParam;
     resultsPanel.textContent = `You chose ${playerChoice}.`;
+    resultsPanel.textContent += ` The computer chose ${computerChoice}.`;
 
     /* Compare the choices and decide the winner of the round */
-    resultsPanel.textContent += ` The computer chose ${computerChoice}.`;
     if (playerChoice === computerChoice) {
         resultsPanel.textContent += ` Draw.`;
+        // Doesn't increment round so there's always 5 rounds with a winner.
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors")
         ||
@@ -37,6 +38,7 @@ function gameRound(playerChoice){
         round++;
     }
 
+    /* Game plays for specified number of rounds */
     if (round === 5){
         gameEnd();
     }
@@ -49,11 +51,11 @@ function gameEnd(){
     } else {
         resultsPanel.textContent += ` Your score: ${score}/5 - You lost!`;
     }
-     // Remove buttons and stop graying out play button
-
+     
      score = 0;
      round = 0;
 
+     /* Removes choice buttons */
      const buttons = document.querySelector(".buttons");
      const playButton = document.querySelector(".playButton");
      for (let i = 0; i < 3; i++){
@@ -90,19 +92,19 @@ function game(){
     rockButton.setAttribute("title", "co mam na czole co mam na czole");
     buttons.appendChild(rockButton);
     rockButton.addEventListener("click", gameRound);
-    rockButton.myParam = "rock";
+    rockButton.myParam = "rock";  // Allows to pass player choice to gameRound
 
     const paperButton = document.createElement('button');
     paperButton.textContent = "paper"
     buttons.appendChild(paperButton);
     paperButton.addEventListener("click", gameRound);
-    paperButton.myParam = "paper";
+    paperButton.myParam = "paper";  // Allows to pass player choice to gameRound
 
     const scissorsButton = document.createElement('button');
     scissorsButton.textContent = "scissors"
     buttons.appendChild(scissorsButton);
     scissorsButton.addEventListener("click", gameRound);
-    scissorsButton.myParam = "scissors";
+    scissorsButton.myParam = "scissors";  // Allows to pass player choice to gameRound
 }
 
 const playButton = document.querySelector(".playButton");

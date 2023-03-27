@@ -1,6 +1,6 @@
 /* Make computer choose rock/paper/scissors based on rng */
 function getComputerChoice(){
-    
+
     let computerRoll = Math.random() * 100 + 1;
     let computerChoice;
     if (computerRoll <= 33){
@@ -40,6 +40,8 @@ function gameRound(playerChoice){
         round++;
     }
 
+    resultsPanel.textContent += ` Your score: ${playerScore}/${round}.`
+
     let neededWins = 3;
     if (playerScore === neededWins || computerScore === neededWins ){
         gameEnd(neededWins);
@@ -49,9 +51,9 @@ function gameRound(playerChoice){
 function gameEnd(neededWins){
 
     if (playerScore >= neededWins){
-        resultsPanel.textContent += ` Your score: ${playerScore}/${round} - You won!`;
+        resultsPanel.textContent += ` You won!`;
     } else {
-        resultsPanel.textContent += ` Your score: ${playerScore}/${round} - You lost!`;
+        resultsPanel.textContent += ` You lost!`;
     }
      
      playerScore = 0;

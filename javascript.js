@@ -31,28 +31,29 @@ function gameRound(playerChoice){
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
         resultsPanel.textContent += ` You win the round.`;
-        score++;
+        playerScore++;
         round++;
     } else {
         resultsPanel.textContent += ` You loose the round.`;
+        computerScore++;
         round++;
     }
 
-    /* Game plays for specified number of rounds */
-    if (round === 5){
-        gameEnd();
+    let neededWins = 3;
+    if (playerScore === neededWins || computerScore === neededWins ){
+        gameEnd(neededWins);
     }
 }
 
-function gameEnd(){
-    console.log(`Your score: ${score}/5`);
-    if (score >= 3){
+function gameEnd(neededWins){
+    if (playerScore >= neededWins){
         resultsPanel.textContent += ` Your score: ${score}/5 - You won!`;
     } else {
         resultsPanel.textContent += ` Your score: ${score}/5 - You lost!`;
     }
      
-     score = 0;
+     playerScore = 0;
+     computerScore = 0;
      round = 0;
 
      /* Removes choice buttons */
@@ -113,6 +114,8 @@ playButton.addEventListener("click", game);
 /* Global variables - because passing arguments to functions started by addEventListener is hard */
 let score = 0;
 let round = 0;
+let playerScore = 0;
+let computerScore = 0;
 let isPlayed = 0;
 
 const body = document.querySelector("body");

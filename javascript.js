@@ -30,12 +30,12 @@ function gameRound(playerChoice){
 
     let computerChoice = getComputerChoice();
     playerChoice = playerChoice.currentTarget.myParam;
-    console.log(`You chose ${playerChoice}`)
+    resultsPanel.textContent = `You chose ${playerChoice}.`;
 
     //Compare the choices and decide the winner of the round
-    console.log(`The computer chose ${computerChoice}`);
+    resultsPanel.textContent += ` The computer chose ${computerChoice}.`;
     if (playerChoice === computerChoice) {
-       console.log("Draw");
+        resultsPanel.textContent += ` Draw.`;
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors")
         ||
@@ -43,11 +43,11 @@ function gameRound(playerChoice){
         ||
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log("You win the round");
+        resultsPanel.textContent += ` You win the round.`;
         score++;
         round++;
     } else {
-        console.log("You lose the round");
+        resultsPanel.textContent += ` You loose the round.`;
         round++;
     }
 
@@ -62,9 +62,9 @@ function gameRound(playerChoice){
 function gameEnd(){
     console.log(`Your score: ${score}/5`);
     if (score >= 3){
-        resultsPanel.textContent = "siemaaaa";
+        resultsPanel.textContent = `Your score: ${score}/5 - You won!`;
     } else {
-        console.log("You lost the game")
+        resultsPanel.textContent = `Your score: ${score}/5 - You lost!`;
     }
 
      // Remove buttons and stop graying out play button

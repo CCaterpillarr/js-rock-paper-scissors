@@ -55,8 +55,13 @@ function gameEnd(){
      round = 0;
 
      const buttons = document.querySelector(".buttons");
+     const playButton = document.querySelector(".playButton");
      for (let i = 0; i < 3; i++){
-        buttons.removeChild(buttons.lastChild);
+        if (buttons.lastChild === playButton) {  // Fixes bug where removeChild also removes play button
+            break;
+        } else {
+            buttons.removeChild(buttons.lastChild);
+        }
      }
      
      playButton.textContent = "Play again";

@@ -1,4 +1,11 @@
-.playButton {
+button {
     font-size: 50px;
     padding: 40px 80px;
+    margin: 5px;
+}
+
+.playButton {
+    font-size: 40px;
+    padding: 30px 60px;
+    margin: 20px;
 }

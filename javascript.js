@@ -23,13 +23,13 @@ function compareString(string){
 
 function gameRound(){
     let computerChoice = getComputerChoice();
-    let playerChoice = prompt("Your choice:");
+    //let playerChoice = prompt("Your choice:");
     playerChoice = playerChoice.toLowerCase();
 
     //Show the prompt again if player didn't choose one of the 3 proper options
     while (compareString(playerChoice) !== 1) {
         console.log("That's not an option. Try again.");
-        playerChoice = prompt("Your choice:");
+        //playerChoice = prompt("Your choice:");
         playerChoice = playerChoice.toLowerCase();
     }
 
@@ -46,14 +46,45 @@ function gameRound(){
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
         console.log("You win the round");
+        roundEnd();
         return 1;
     } else {
         console.log("You lose the round");
+        roundEnd();
         return 0;
     }
 }
 
+function roundEnd(){
+// Display round results at bottom
+// Count score at bottom
+}
+
+function gameEnd(){
+ // Display winner at bottom
+ // Remove buttons and stop graying out play button
+}
+
 function game(){
+
+    // Pop up buttons for rock paper scissors
+    const buttons = document.querySelector(".buttons");
+    const rockButton = document.createElement('button');
+    rockButton.textContent = "rock"
+    buttons.appendChild(rockButton);
+
+    const paperButton = document.createElement('button');
+    paperButton.textContent = "paper"
+    buttons.appendChild(paperButton);
+
+    const scissorsButton = document.createElement('button');
+    scissorsButton.textContent = "scissors"
+    buttons.appendChild(scissorsButton);
+
+    //rock co mam na czole
+    // const paperButton = document.createElement("")
+    //const scissorsButton =
+    // Gray out the play button
 
     //Play a specified number (i's end value) of rounds
     let score = 0;

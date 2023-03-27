@@ -1,4 +1,4 @@
-//Make computer choose rock/paper/scissors based on rng
+/* Make computer choose rock/paper/scissors based on rng */
 function getComputerChoice(){
     let computerRoll = Math.random() * 100 + 1;
     let computerChoice;
@@ -18,7 +18,7 @@ function gameRound(playerChoice){
     playerChoice = playerChoice.currentTarget.myParam;
     resultsPanel.textContent = `You chose ${playerChoice}.`;
 
-    //Compare the choices and decide the winner of the round
+    /* Compare the choices and decide the winner of the round */
     resultsPanel.textContent += ` The computer chose ${computerChoice}.`;
     if (playerChoice === computerChoice) {
         resultsPanel.textContent += ` Draw.`;
@@ -63,21 +63,25 @@ function gameEnd(){
             buttons.removeChild(buttons.lastChild);
         }
      }
+
+     isPlayed = 0;  // Player ends the game.
      
      playButton.textContent = "Play again";
 }
 
 function game(){
 
-    if (played === 1) {
+    resultsPanel.textContent = "";
+
+    if (isPlayed === 1) {     // Allows player to restart the game.
         gameEnd();
         resultsPanel.textContent = "Game restarted.";
     }
+    isPlayed = 1;  // Player starts playing the game.
 
-    played = 1;
     playButton.textContent = "Restart";
     
-    // Pop up buttons for rock paper scissors
+    /* Pop up buttons for choosing rock paper scissors */
     const buttons = document.querySelector(".buttons");
 
     const rockButton = document.createElement('button');
@@ -103,14 +107,14 @@ function game(){
     scissorsButton.myParam = "scissors";
 }
 
+const playButton = document.querySelector(".playButton");
+playButton.addEventListener("click", game);
+
+/* Global variables - because passing arguments to functions started by addEventListener is hard */
+let score = 0;
+let round = 0;
+let isPlayed = 0;
 
 const body = document.querySelector("body");
 const resultsPanel = document.querySelector(".resultsPanel");
 body.appendChild(resultsPanel);
-
-const playButton = document.querySelector(".playButton");
-playButton.addEventListener("click", game);
-
-let score = 0;
-let round = 0;
-let played = 0;

@@ -12,15 +12,6 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-//Check if player chose one of the 3 proper options
-function compareString(string){
-    if (string === "rock" || string === "paper" || string === "scissors") {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
 function gameRound(playerChoice){
 
     let computerChoice = getComputerChoice();

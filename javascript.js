@@ -27,17 +27,15 @@ function rockClick(){
 }
 
 function gameRound(playerChoice){
-    console.log("works");
-    
+
     let computerChoice = getComputerChoice();
     playerChoice = playerChoice.currentTarget.myParam;
-    console.log(playerChoice);
+    console.log(`You chose ${playerChoice}`)
 
     //Compare the choices and decide the winner of the round
     console.log(`The computer chose ${computerChoice}`);
     if (playerChoice === computerChoice) {
-        console.log("Draw");
-        return 2;
+       console.log("Draw");
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors")
         ||
@@ -46,24 +44,41 @@ function gameRound(playerChoice){
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
         console.log("You win the round");
-        roundEnd();
-        return 1;
+        score++;
+        round++;
     } else {
         console.log("You lose the round");
-        roundEnd();
-        return 0;
+        round++;
+    }
+
+    if (round < 5){
+        // Display round results at bottom
+        // Count score at bottom
+    } else {
+        gameEnd();
     }
 }
 
-function roundEnd(){
-// Display round results at bottom
-// Count score at bottom
+function gameEnd(){
+    console.log(`Your score: ${score}/5`);
+    if (score >= 3){
+        resultsPanel.textContent = "siemaaaa";
+    } else {
+        console.log("You lost the game")
+    }
+
+     // Remove buttons and stop graying out play button
+     score = 0;
+     round = 0;
 }
 
-function gameEnd(){
- // Display winner at bottom
- // Remove buttons and stop graying out play button
-}
+
+const body = document.querySelector("body");
+const resultsPanel = document.querySelector(".resultsPanel");
+body.appendChild(resultsPanel);
+
+let score = 0;
+let round = 0;
 
 function game(){
 
@@ -71,6 +86,7 @@ function game(){
     const buttons = document.querySelector(".buttons");
     const rockButton = document.createElement('button');
     rockButton.textContent = "rock"
+    rockButton.setAttribute("title", "co mam na czole co mam na czole");
     buttons.appendChild(rockButton);
     rockButton.addEventListener("click", gameRound);
     rockButton.myParam = "rock";
@@ -78,37 +94,20 @@ function game(){
     const paperButton = document.createElement('button');
     paperButton.textContent = "paper"
     buttons.appendChild(paperButton);
+    paperButton.addEventListener("click", gameRound);
+    paperButton.myParam = "paper";
 
     const scissorsButton = document.createElement('button');
     scissorsButton.textContent = "scissors"
     buttons.appendChild(scissorsButton);
+    scissorsButton.addEventListener("click", gameRound);
+    scissorsButton.myParam = "scissors";
 
     //rock co mam na czole
 
     // make game repeatable
-
-    //Play a specified number (i's end value) of rounds
-    // let score = 0;
-    // for (let i = 1; i <=5; i++){
-    //     let roundResult = gameRound();
-    //     if (roundResult === 2){
-    //         i--; //Add 1 round if previous was a draw (so there's always 5 rounds)
-    //     } else {
-    //         score = score + roundResult;
-    //     }
-    // }
-
-    //Check if player won based on score
-    console.log(`Your score: ${score}/5`);
-    if (score >= 3){
-        console.log('You won the game');
-    } else {
-        console.log("You lost the game")
-    }
 }
+
 
 const playButton = document.querySelector(".playButton");
 playButton.addEventListener("click", game);
-
-const resultsPanel = document.querySelector(".resultsPanel");
-resultsPanel.style.color = "red";

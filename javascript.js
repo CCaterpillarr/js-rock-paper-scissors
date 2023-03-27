@@ -75,7 +75,7 @@ function game(){
     }
 
     played = 1;
-   // playButton.textContent = "Restart";
+    playButton.textContent = "Restart";
     
     // Pop up buttons for rock paper scissors
     const buttons = document.querySelector(".buttons");

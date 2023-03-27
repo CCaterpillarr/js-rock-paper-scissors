@@ -47,9 +47,9 @@ function gameRound(playerChoice){
 
 function gameEnd(neededWins){
     if (playerScore >= neededWins){
-        resultsPanel.textContent += ` Your score: ${score}/5 - You won!`;
+        resultsPanel.textContent += ` Your score: ${playerScore}/${round} - You won!`;
     } else {
-        resultsPanel.textContent += ` Your score: ${score}/5 - You lost!`;
+        resultsPanel.textContent += ` Your score: ${playerScore}/${round} - You lost!`;
     }
      
      playerScore = 0;

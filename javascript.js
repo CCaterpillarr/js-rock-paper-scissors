@@ -75,4 +75,8 @@ function game(){
     }
 }
 
-game();
+const playButton = document.querySelector(".playButton");
+playButton.addEventListener("click", game);
+
+const resultsPanel = document.querySelector(".resultsPanel");
+resultsPanel.style.color = "red";

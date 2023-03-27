@@ -21,17 +21,17 @@ function compareString(string){
     }
 }
 
-function gameRound(){
-    let computerChoice = getComputerChoice();
-    //let playerChoice = prompt("Your choice:");
-    playerChoice = playerChoice.toLowerCase();
+function rockClick(){
+    let choice = "rock";
+    return choice;
+}
 
-    //Show the prompt again if player didn't choose one of the 3 proper options
-    while (compareString(playerChoice) !== 1) {
-        console.log("That's not an option. Try again.");
-        //playerChoice = prompt("Your choice:");
-        playerChoice = playerChoice.toLowerCase();
-    }
+function gameRound(playerChoice){
+    console.log("works");
+    
+    let computerChoice = getComputerChoice();
+    playerChoice = playerChoice.currentTarget.myParam;
+    console.log(playerChoice);
 
     //Compare the choices and decide the winner of the round
     console.log(`The computer chose ${computerChoice}`);
@@ -72,6 +72,8 @@ function game(){
     const rockButton = document.createElement('button');
     rockButton.textContent = "rock"
     buttons.appendChild(rockButton);
+    rockButton.addEventListener("click", gameRound);
+    rockButton.myParam = "rock";
 
     const paperButton = document.createElement('button');
     paperButton.textContent = "paper"
@@ -82,20 +84,19 @@ function game(){
     buttons.appendChild(scissorsButton);
 
     //rock co mam na czole
-    // const paperButton = document.createElement("")
-    //const scissorsButton =
-    // Gray out the play button
+
+    // make game repeatable
 
     //Play a specified number (i's end value) of rounds
-    let score = 0;
-    for (let i = 1; i <=5; i++){
-        let roundResult = gameRound();
-        if (roundResult === 2){
-            i--; //Add 1 round if previous was a draw (so there's always 5 rounds)
-        } else {
-            score = score + roundResult;
-        }
-    }
+    // let score = 0;
+    // for (let i = 1; i <=5; i++){
+    //     let roundResult = gameRound();
+    //     if (roundResult === 2){
+    //         i--; //Add 1 round if previous was a draw (so there's always 5 rounds)
+    //     } else {
+    //         score = score + roundResult;
+    //     }
+    // }
 
     //Check if player won based on score
     console.log(`Your score: ${score}/5`);

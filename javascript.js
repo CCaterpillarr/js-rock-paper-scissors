@@ -58,10 +58,19 @@ function gameEnd(){
      for (let i = 0; i < 3; i++){
         buttons.removeChild(buttons.lastChild);
      }
+     
+     playButton.textContent = "Play again";
 }
 
 function game(){
 
+    if (played === 1) {
+        gameEnd();
+        resultsPanel.textContent = "Game restarted.";
+    }
+
+    played = 1;
+   // playButton.textContent = "Restart";
     
     // Pop up buttons for rock paper scissors
     const buttons = document.querySelector(".buttons");
@@ -99,3 +108,4 @@ playButton.addEventListener("click", game);
 
 let score = 0;
 let round = 0;
+let played = 0;
